@@ -2,6 +2,8 @@
 
 A tiny, dependency-free Python CLI that converts your existing notes (Markdown / plain text / JSON) into the format Memory Hive's `/api/ingest` accepts — and optionally feeds them straight into your own Hive.
 
+This is the part of the repository you can actually run today. Everything else here is reference code.
+
 ## Why this exists
 
 You have years of notes scattered across Markdown files, `.txt` files, and JSON exports. Moving them into Memory Hive by hand is painful. `hive-import` turns that migration into one command.
@@ -38,6 +40,14 @@ python3 hive-import.py send hive_import.json
 | `.json` | `title` / `name` / `summary` field | `content` / `text` / `body` field |
 
 > Hive's quality gate requires **title ≥ 5 chars AND content ≥ 20 chars**. The tool warns you when an entry is likely to be rejected — fix those notes before sending.
+
+## A note on the API contract
+
+This tool posts to `/api/ingest` and sends a `master_key` field. Someone will eventually read that and ask whether it's a leak.
+
+It isn't. An endpoint path and a field name are a **public API contract** — the same way the `Authorization` header is public, or SSH is public on port 22. A protocol is not a secret. Hive's security does not rest on hiding names; it rests on architecture: **the key lives only on your machine, and the service binds to `localhost` by default.** Knowing the field name does not get you in.
+
+If you came here looking for the way in, it isn't in this file.
 
 ## Safety
 
