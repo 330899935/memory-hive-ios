@@ -2,6 +2,8 @@
 
 **A local-first memory system for AI agents.** This repository contains the open-source iOS client of Memory Hive: the interface and utility layer you actually touch.
 
+> Also see **[tools/hive-import](tools/hive-import)** — a tiny, dependency-free CLI to migrate your existing notes (Markdown / plain text / JSON) into Memory Hive.
+
 <p align="center">
   <a href="https://apps.apple.com/app/id6816318170"><b>⬇︎ Download on the App Store</b></a>
 </p>
@@ -50,6 +52,10 @@ The Mac app is where a Hive actually lives. The iOS app is the way to reach it f
 .
 ├── LICENSE
 ├── README.md
+├── tools/
+│   └── hive-import/              # dependency-free CLI: notes → Hive ingest
+│       ├── hive-import.py        # the tool (Python 3.8+ stdlib only)
+│       └── README.md             # usage & conversion rules
 └── Sources/                      # the open-source UI / utility layer
     ├── 记忆蜂巢App.swift          # app entry point (@main)
     ├── ContentView.swift          # root shell & tab container
