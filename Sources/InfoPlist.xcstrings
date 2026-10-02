@@ -1,0 +1,96 @@
+{
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "桌面图标名。中文=记忆蜂巢，英文=Memory Hive。注意 PRODUCT_NAME 只管 .app/可执行文件名，图标名看这条。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory Hive"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记忆蜂巢"
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription" : {
+      "comment" : "相机权限。原残留内部术语「待归巢队列」，已按术语定稿改「待同步队列」（Pending）。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takes photos so image thoughts can be saved to the local pending queue"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拍照用于把图片念头存进本地待同步队列"
+          }
+        }
+      }
+    },
+    "NSLocalNetworkUsageDescription" : {
+      "comment" : "本地网络权限（分段P0-3）。iOS 14+ 访问局域网必弹此授权，缺本键会无弹窗直接失败；iOS 17 起 ATS 对 IP 字面量默认不放行，另需 InfoPartial.plist 的 NSAllowsLocalNetworking。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connects to your own computer's Hive over the same Wi-Fi. Content travels only between your two devices and is never uploaded."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用于在同一 Wi-Fi 下连接你自己的电脑蜂巢，内容只在你两台设备之间传输，不上传云端"
+          }
+        }
+      }
+    },
+    "NSMicrophoneUsageDescription" : {
+      "comment" : "麦克风权限。原残留「待归巢队列」。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Records audio so voice thoughts can be saved to the local pending queue"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录音用于把语音念头存进本地待同步队列"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "comment" : "相册权限。原残留「待归巢队列」。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lets you pick photos to save to the local pending queue"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用于挑选照片存进本地待同步队列"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

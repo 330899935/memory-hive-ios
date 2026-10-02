@@ -46,18 +46,54 @@ The Mac app is where a Hive actually lives. The iOS app is the way to reach it f
 
 ## Repository layout
 
-<!-- filled once the source package lands -->
-
 ```
 .
 ├── LICENSE
 ├── README.md
-└── ...
+└── Sources/                      # the open-source UI / utility layer
+    ├── 记忆蜂巢App.swift          # app entry point (@main)
+    ├── ContentView.swift          # root shell & tab container
+    ├── Theme.swift                # design system: colors, type, spacing
+    ├── HiveTabIcons.swift         # tab-bar iconography
+    ├── HiveHaptics.swift          # haptic feedback helpers
+    ├── HomeMotion.swift           # home-screen motion / animation
+    ├── CameraPicker.swift         # camera capture wrapper
+    ├── DocumentPicker.swift       # document picker wrapper
+    ├── MediaCapture.swift         # shared media-capture plumbing
+    ├── InfoSheet.swift            # about / info sheet
+    ├── ThoughtNameSheet.swift     # naming sheet for a thought
+    ├── HiveManualSheet.swift      # in-app manual / help content
+    ├── Localizable.xcstrings      # UI strings (Simplified Chinese / English)
+    ├── InfoPlist.xcstrings        # Info.plist usage-string localization
+    ├── Assets.xcassets/           # asset catalog (app icon, colors)
+    └── Views/                     # the screens
+        ├── HomeView.swift
+        ├── HomeCandidateView.swift
+        ├── AskView.swift
+        ├── AskOfflineView.swift
+        ├── DetailView.swift
+        ├── SaveView.swift
+        ├── ThoughtDetailSheet.swift
+        ├── AntennaDetailView.swift
+        ├── PlaceholderPage.swift
+        └── 规划页.swift            # Planning screen
 ```
+
+22 Swift files in total: 12 at the `Sources/` root (app shell + utility
+layer) and 10 under `Sources/Views/` (the screens).
 
 ## Building
 
-<!-- filled once the source package lands -->
+This subset is published as **readable reference code**, not as a buildable
+project. The Xcode project file and the closed modules listed above are not
+part of the repository, so `xcodebuild` will not produce a runnable app from
+this tree alone.
+
+To compile the shipping app, get it from the App Store (see **Getting the
+app**). To study or reuse the UI layer on its own, copy the files you need
+into your own SwiftUI project — the views and the design system under
+`Sources/` are self-contained apart from the closed service layer they talk
+to at runtime.
 
 ## License
 
