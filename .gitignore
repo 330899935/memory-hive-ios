@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Xcode — user state and build products
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Archives / distribution
+*.xcarchive
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# XcodeGen generated project
+*.xcodeproj/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Local secrets — never commit
+*.env
+*.env.*
+Secrets.xcconfig
+Local.xcconfig
