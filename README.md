@@ -3,6 +3,13 @@
 **Your AI assistants forget you the moment the context window closes.** Memory Hive is a personal memory store that runs on your own machine — one place every agent can read from and write back to, so what you told one assistant is still there when you ask the next one.
 
 <p align="center">
+  <img src="docs/screenshots/01-tentacle.png" width="190" alt="Memory Hive — your memories, listed">
+  <img src="docs/screenshots/02-save.png" width="190" alt="Catch a thought">
+  <img src="docs/screenshots/03-ask.png" width="190" alt="Ask your own Hive">
+</p>
+<p align="center"><sub>The pocket client on iPhone — catch a thought on the go, it syncs home to your own Hive. <i>UI renders, not device captures.</i></sub></p>
+
+<p align="center">
   <a href="https://apps.apple.com/app/id6816318170"><b>⬇︎ Memory Hive for iPhone / iPad — free</b></a>
   &nbsp;&nbsp;·&nbsp;&nbsp;
   <a href="https://apps.apple.com/app/id6806992983"><b>⬇︎ Memory Hive for Mac — where a Hive lives</b></a>
