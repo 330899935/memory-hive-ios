@@ -3,6 +3,13 @@
 **AI 助手在你关掉对话窗口的那一刻就把你忘了。** 记忆蜂巢是一个跑在你自己机器上的个人记忆库——所有 agent 都能读、都能写回来，所以你跟一个助手说过的事，换另一个助手问它还在。
 
 <p align="center">
+  <img src="docs/screenshots/01-tentacle.png" width="190" alt="记忆蜂巢——你的记忆，列在这里">
+  <img src="docs/screenshots/02-save.png" width="190" alt="接住一个念头">
+  <img src="docs/screenshots/03-ask.png" width="190" alt="掏出来问自己的蜂巢">
+</p>
+<p align="center"><sub>口袋客户端（iPhone）——随手接住一个念头，回到家里自动同步进你自己的蜂巢。<i>界面还原图，非设备实拍。</i></sub></p>
+
+<p align="center">
   <a href="https://apps.apple.com/app/id6816318170"><b>⬇︎ iPhone / iPad 版（免费）</b></a>
   &nbsp;&nbsp;·&nbsp;&nbsp;
   <a href="https://apps.apple.com/app/id6806992983"><b>⬇︎ Mac 版（蜂巢本体所在）</b></a>
