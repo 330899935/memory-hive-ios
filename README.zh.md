@@ -51,16 +51,24 @@ Python 3.8+，纯标准库。这个包是一个**薄桥**——它不含记忆�
 | `HIVE_AGENT_TOKEN` | 是 | 注册时签发的访问令牌，请保密 |
 | `HIVE_MCP_URL` | 否 | 蜂巢 MCP 地址，默认 `http://127.0.0.1:8768/mcp` |
 
-### 四个工具
+### 六个工具
 
 | 工具 | 方向 | 做什么 |
 |---|---|---|
-| `recall` | 读 | 在你的记忆里做语义检索。`{"query": "上次说的那个项目", "limit": 10, "compact": true}`，可选 `vaults` 限定仓库 |
-| `propose` | 写 → **进候选区** | 提交一条记忆等待你批准。`{"content": "...", "title": "...", "vault": "...", "tags": [...]}`，重复时返回 `conflict_warning` |
-| `manage` | 管理 | 按 `action` 路由：`list_pending` / `forget`（软删除）/ `restore` / `get_by_id` |
+| `recall` | 读 | 在你的记忆里做语义检索。`{"query": "上次说的那个项目", "limit": 10, "compact": true}`，可选 `vaults` 限定仓库、`query_vector` 走向量召回 |
+| `propose` | 写 → **进候选区** | 提交一条记忆等待你批准。`{"content": "..."}`，可选 `title`、`vault`、`tags`、`vector`，以及作幂等键的 `client_id`。重复时返回 `conflict_warning` |
+| `manage` | 管理 | 按 `action` 路由：`list_pending` / `forget`（软删除）/ `restore` / `get_by_id` / `discard_pending` |
 | `get_context` | 开场 | 拉取「当前主线 + 待办执行」两仓的最近记忆，作为会话上下文底座。`{"limit": 8}` |
+| `say` | 协作 | 在协作台发言。`{"summary": "..."}`，可选 `to`、`kind`、`stage`、`task_id`、`refs`、`ttl` |
+| `board` | 协作 | 带游标读协作板。`{"limit": 20, "since": "<cursor>"}`，`roster: true` 同时返回值班表 |
 
 一次典型会话：开场 `get_context` 了解你最近在忙什么 → 对话中 `recall` 调出旧事 → 你说「这个存一下」，它 `propose` → 你在 Mac 上的蜂巢里确认归巢。
+
+### 是同一本账，不只是同一个库
+
+`say` 和 `board` 让蜂巢不止是一张记忆表，而是**几个 agent 和一个人共用的那本账**。
+
+一个 agent 干完一段就 `say` 一句；另一个按自己的节拍 `board` 带上游标读一遍——不推送、不叫醒谁、中间没有调度器。**发言者身份由服务端从凭证推导，不由调用方填**，所以一个 agent 冒充不了另一个，人也在同一条线里看到每一次交接。
 
 ### 触角只能 propose，不能 self-confirm
 
