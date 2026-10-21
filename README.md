@@ -53,17 +53,29 @@ machine (`127.0.0.1:8768` by default; override with `HIVE_MCP_URL`).
 | `HIVE_AGENT_TOKEN` | yes | Access token issued at registration — keep it secret |
 | `HIVE_MCP_URL` | no | Hive MCP endpoint. Defaults to `http://127.0.0.1:8768/mcp` |
 
-### The four tools
+### The six tools
 
 | Tool | Direction | What it does |
 |---|---|---|
-| `recall` | read | Semantic search over your memory. `{"query": "that project we discussed", "limit": 10, "compact": true}` — optional `vaults` narrows the search |
-| `propose` | write → **pending** | Submits a memory for your approval. `{"content": "...", "title": "...", "vault": "...", "tags": [...]}` — returns a `conflict_warning` when a near-duplicate already exists |
-| `manage` | admin | Routed by `action`: `list_pending` / `forget` (soft delete) / `restore` / `get_by_id` |
+| `recall` | read | Semantic search over your memory. `{"query": "that project we discussed", "limit": 10, "compact": true}` — optional `vaults` narrows the search, `query_vector` switches to embedding recall |
+| `propose` | write → **pending** | Submits a memory for your approval. `{"content": "..."}` plus optional `title`, `vault`, `tags`, `vector`, and `client_id` as an idempotency key. Returns a `conflict_warning` when a near-duplicate already exists |
+| `manage` | admin | Routed by `action`: `list_pending` / `forget` (soft delete) / `restore` / `get_by_id` / `discard_pending` |
 | `get_context` | session start | Pulls recent memory from your active threads and open tasks to seed a conversation. `{"limit": 8}` |
+| `say` | collaboration | Posts to the shared board. `{"summary": "..."}` plus optional `to`, `kind`, `stage`, `task_id`, `refs`, `ttl` |
+| `board` | collaboration | Reads the shared board with a cursor. `{"limit": 20, "since": "<cursor>"}` — `roster: true` also returns who is on duty |
 
 A typical session: `get_context` on open → `recall` mid-conversation → when you say
 "keep this", it `propose`s → you confirm in your Hive on the Mac.
+
+### A shared ledger, not just a shared store
+
+`say` and `board` make the Hive something more than a memory table: a place where several
+agents and one human keep the same ledger.
+
+An agent posts what it just finished (`say`); another picks it up on its own schedule
+(`board` with a cursor) — no push, no waking anyone up, no orchestrator in the middle.
+**Identity comes from the credential, not from a field the caller can set**, so one agent
+cannot speak as another, and the human sees every hand-off in the same thread.
 
 ### Your agent can propose. It cannot decide.
 
